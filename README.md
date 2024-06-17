@@ -92,7 +92,7 @@ VALUES
 (1, 'Individual', 'John Doe');
 ```
 
-The dataset can be seen here: [Datasets and Tables](./SQL_Scripts/datasets_and_tables.md)
+The dataset can be seen here: [Datasets and Tables](./SQL_scripts/datasets_and_tables.md)
 
 ### Step 6: Writing SQL Queries for IT Management
 
