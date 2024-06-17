@@ -72,6 +72,26 @@ Mock data was inserted into the tables to demonstrate the system's functionality
 
 Path: [Database Insertion Script](./SQL_Scripts/AirManDB_insert_queries.sql)
 
+#### Example Snippet:
+```sql
+-- Adding PERSON table data
+INSERT INTO PERSON (Name, AddressLine1, PhoneNumber, Email, SocialInsuranceNumber, Role)
+VALUES
+('John Doe', '123 Aviation Way', '555-1234', 'johndoe@example.com', '123-45-6789', 'Customer'),
+('Alice Smith', '234 Skyline Blvd', '555-2345', 'alicesmith@example.com', '987-65-4321', 'Pilot'),
+('Bob Johnson', '345 Jetstream St', '555-3456', 'bobjohnson@example.com', '135-79-2468', 'Employee');
+
+-- Adding PILOT table data
+INSERT INTO PILOT (PersonID, LicenseNumber, MedicalCertificationDate, FlightReviewDate, OperatingLimitations)
+VALUES
+(2, 'PIL123456', '2022-06-15', '2022-06-15', 'None');
+
+-- Adding CUSTOMER table data
+INSERT INTO CUSTOMER (PersonID, CustomerCategory, ContactPerson)
+VALUES
+(1, 'Individual', 'John Doe');
+```
+
 ### Step 6: Writing SQL Queries for IT Management
 
 The IT management team is interested in important analytics to help them understand and manage the airport operations effectively. Below listed questions were posed, and SQL queries were written to answer these questions.
