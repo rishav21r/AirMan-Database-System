@@ -38,7 +38,7 @@ Path: [Database Creation Script](./SQL_Scripts/AirManDB_create_script.sql)
 
 #### Example Snippet:
 ```sql
--- Creating the PERSON table
+-- Creating PERSON table
 CREATE TABLE PERSON (
   PersonID INT AUTO_INCREMENT PRIMARY KEY,
   Name VARCHAR(255) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE PERSON (
   SocialInsuranceNumber VARCHAR(15) UNIQUE,
   Role ENUM('Customer', 'Pilot', 'Employee') NOT NULL
 );
--- Creating the PILOT table that inherits from PERSON
+-- Creating PILOT table that inherits from PERSON
 CREATE TABLE PILOT (
   PersonID INT,
   LicenseNumber VARCHAR(255) NOT NULL UNIQUE,
@@ -61,13 +61,18 @@ CREATE TABLE PILOT (
 );
 ```
 
-### Step 4: Inserting Data
+### Step 4: Verifying the Database Schema
+After creating the database schema in MySQL, the schema was reverse-engineered to generate an Entity-Relationship Model (ERM). This step verified that the ERD and ERM models match, ensuring the correct database creation.
+
+![AirMan ERD](./ERD/AirMan_reverse_engineering_ERM.png)
+
+### Step 5: Inserting Data
 
 Mock data was inserted into the tables to demonstrate the system's functionality. This data serves as sample records to test and validate the database operations.
 
 Path: [Database Insertion Script](./SQL_Scripts/AirManDB_insert_queries.sql)
 
-### Step 5: Writing SQL Queries for IT Management
+### Step 6: Writing SQL Queries for IT Management
 
 The IT management team is interested in important analytics to help them understand and manage the airport operations effectively. Below listed questions were posed, and SQL queries were written to answer these questions.
 
