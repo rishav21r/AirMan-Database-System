@@ -225,3 +225,20 @@
 | `MaintenanceActivity`      | Varchar   |             | Description of the maintenance activity                 |
 | `IntervalHours`            | Int       |             | Interval in hours for the maintenance activity          |
 | `IntervalMonths`           | Int       |             | Interval in months for the maintenance activity         |
+
+
+## Normalization
+
+The database design adheres to the principles of normalization to eliminate redundancy and ensure data integrity.
+
+### First Normal Form (1NF)
+- Ensures that each table has a primary key.
+- Each column contains atomic values, and each record is unique.
+
+### Second Normal Form (2NF)
+- Ensures that all non-key attributes are fully functional and dependent on the primary key.
+- Removes partial dependencies, where an attribute is dependent on only a part of the primary key.
+
+### Third Normal Form (3NF)
+- Ensures that there are no transitive dependencies.
+- All attributes are functionally dependent only on the primary key.
