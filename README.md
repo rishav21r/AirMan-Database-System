@@ -64,7 +64,7 @@ CREATE TABLE PILOT (
 ### Step 4: Verifying the Database Schema
 After creating the database schema in MySQL, the schema was reverse-engineered to generate an Entity-Relationship Model (ERM). This step verified that the ERD and ERM models match, ensuring the correct database creation.
 
-![AirMan ERD](./ERD/AirMan_reverse_engineering_ERM.png)
+![AirMan ERD](./ERD/AirManERD_reverse_engineering_ERM.png)
 
 ### Step 5: Inserting Data
 
