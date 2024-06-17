@@ -1,4 +1,4 @@
-## Data Definitions
+## Data Definitions and Normalizations
 
 ### Customers
 
