@@ -34,7 +34,7 @@ Using the identified entities and attributes, an Entity-Relationship Diagram (ER
 
 With the ERD as a blueprint, the next step was to implement the database schema in MySQL. This involved creating tables for each entity and defining their relationships.
 
-Path: [Database Creation Script](./SQL_Scripts/AirManDB_create_script.sql)
+Path: [Database Creation Script](./SQL_scripts/AirManDB_create_queries.sql)
 
 #### Example Snippet:
 ```sql
