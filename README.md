@@ -92,6 +92,8 @@ VALUES
 (1, 'Individual', 'John Doe');
 ```
 
+The dataset can be seen here: [Datasets and Tables](./SQL_Scripts/datasets_and_tables.md)
+
 ### Step 6: Writing SQL Queries for IT Management
 
 The IT management team is interested in important analytics to help them understand and manage the airport operations effectively. Below listed questions were posed, and SQL queries were written to answer these questions.
@@ -100,7 +102,7 @@ The IT management team is interested in important analytics to help them underst
 - List which pilots who are also customers made the most take-offs and landings at the airport in February 2024 and indicate which aircraft they flew by type and registration number.
 - List the employees (by employee number, name, and role) who are qualified service personnel who performed routine services on all aircraft owned by a specific corporation in February 2024.
 - From the previous list, list all the parts used in a service per aircraft type, part number and part name.
-- List the names of all aircraft by type, model, and registration number that landed and were refuelled and/or parked and/or cleaned in February 2024 and the total revenue per aircraft and the total revenue to the Biggin Hill for that month.
+- List the names of all aircraft by type, model, and registration number that landed and were refuelled and/or parked and/or cleaned in February 2024 and the total revenue per aircraft and the total revenue to Biggin Hill for that month.
 
 Path: [SQL Answers Script](./SQL_Scripts/AirManDB_answer_script.sql)
 
