@@ -106,6 +106,47 @@ The IT management team is interested in important analytics to help them underst
 
 Path: [SQL Answers Script](./SQL_Scripts/AirManDB_answer_script.sql)
 
+#### 1. Calculate the landing, service, fuelling, and parking fees for a customer of your choice in February 2024 and indicate if this customer is a corporation.
+This helps IT management understand the costs associated with a specific customer's aircraft operations during a given period.
+
+```sql
+SELECT 
+    C.CustomerID, 
+    C.CustomerCategory, 
+    SUM(LF.LandingFee) AS TotalLandingFee, 
+    SUM(SF.ServiceFee) AS TotalServiceFee, 
+    SUM(FF.FuelingFee) AS TotalFuelingFee, 
+    SUM(PF.ParkingFee) AS TotalParkingFee,
+    CASE 
+        WHEN C.CustomerCategory = 'corporation' THEN 'Yes'
+        ELSE 'No'
+    END AS IsCorporation
+FROM 
+    Customer C
+JOIN 
+    Flight_Record FR ON C.CustomerID = FR.CustomerID
+JOIN 
+    Landing_Fee LF ON FR.FlightRecordID = LF.FlightRecordID
+JOIN 
+    Service_Fee SF ON FR.FlightRecordID = SF.FlightRecordID
+JOIN 
+    Fueling_Fee FF ON FR.FlightRecordID = FF.FlightRecordID
+JOIN 
+    Parking_Fee PF ON FR.FlightRecordID = PF.FlightRecordID
+WHERE 
+    FR.TakeOffDate BETWEEN '2024-02-01' AND '2024-02-28'
+GROUP BY 
+    C.CustomerID, C.CustomerCategory;
+
+```
+
+
+| CustomerID | CustomerCategory | TotalLandingFee | TotalServiceFee | TotalFuelingFee | TotalParkingFee | IsCorporation |
+|------------|------------------|-----------------|-----------------|-----------------|-----------------|---------------|
+| 1          | corporation      | 1500.00         | 1200.00         | 800.00          | 500.00          | Yes           |
+
+
+
 ### Data Definitions and Normalization
 
 Path: [Data Definitions and Normalization](./Data_Definitions_and_Normalization.md)
