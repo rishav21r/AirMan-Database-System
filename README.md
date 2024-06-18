@@ -7,7 +7,7 @@ London Biggin Hill Airport is a general aviation airport at Biggin Hill in the L
 
 The airport has a Civil Aviation Authority (CAA) Ordinary Licence that allows flights for the public transport of passengers or flying instruction. The airport specializes in general aviation, handling a spectrum of traffic from private aviation to large business jets. It has no scheduled airline service, as flights using the airport are not permitted to carry fare-paying passengers.
 
-The airport has one runway that can accommodate the take-off and landing of aircraft up to Boeing 737/Airbus A320 size. It is also an Instrument Landing System. Radar air traffic control (ATC) services are provided by Thames Radar at the London Terminal Control Centre. In contrast, procedural approach and visual flight rules and air traffic control services are provided by the airport itself.
+The airport has one runway that can accommodate the take-off and landing of aircraft up to Boeing 737/Airbus A320 size. It is also an Instrument Landing System. Radar air traffic control (ATC) services are provided by Thames Radar at the London Terminal Control Centre. In contrast, procedural approach visual flight rules and air traffic control services are provided by the airport itself.
 
 Biggin Hill is used by many business flights involving business jets and similar-sized aircraft. The airport has a passenger terminal located on the A233 road just south of Leaves Green, which provides facilities for such flights, including departure lounges, a licensed café bar, and customs and immigration facilities.
 
