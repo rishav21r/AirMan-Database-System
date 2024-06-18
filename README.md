@@ -146,6 +146,141 @@ GROUP BY
 | 1          | corporation      | 1500.00         | 1200.00         | 800.00          | 500.00          | Yes           |
 
 
+#### 2. List which pilots who are also customers made the most take-offs and landings at the airport in February 2024 and indicate which aircraft they flew by type and registration number.
+This helps identify the most active pilots and the aircraft they use.
+
+```sql
+SELECT 
+    P.PilotID, 
+    C.CustomerID, 
+    A.AircraftType, 
+    A.RegistrationNumber, 
+    COUNT(FR.FlightRecordID) AS NumberOfFlights
+FROM 
+    Pilot P
+JOIN 
+    Customer C ON P.PersonID = C.PersonID
+JOIN 
+    Flight_Record FR ON P.PilotID = FR.PilotID
+JOIN 
+    Aircraft A ON FR.AircraftRegistrationNumber = A.RegistrationNumber
+WHERE 
+    FR.TakeOffDate BETWEEN '2024-02-01' AND '2024-02-28'
+GROUP BY 
+    P.PilotID, C.CustomerID, A.AircraftType, A.RegistrationNumber
+ORDER BY 
+    NumberOfFlights DESC;
+```
+
+| PilotID | CustomerID | AircraftType | RegistrationNumber | NumberOfFlights |
+|---------|------------|--------------|--------------------|-----------------|
+| 1       | 1          | Jet          | AB123              | 20              |
+| 2       | 2          | Propeller    | CD456              | 15              |
+
+
+#### 3. List the employees (by employee number, name, and role) who are qualified service personnel who performed routine services on all aircraft owned by a specific corporation in February 2024.
+This provides information about the maintenance personnel who serviced a corporation's aircraft.
+
+```sql
+SELECT 
+    E.EmployeeID, 
+    E.Name, 
+    E.Role, 
+    COUNT(MR.ServiceID) AS ServicesPerformed
+FROM 
+    Employee E
+JOIN 
+    Maintenance_Service_Record MR ON E.PersonID = MR.PersonID
+JOIN 
+    Aircraft A ON MR.AircraftRegistrationID = A.RegistrationNumber
+JOIN 
+    Customer C ON A.CustomerID = C.CustomerID
+WHERE 
+    C.CustomerCategory = 'corporation'
+AND 
+    MR.MaintenanceDate BETWEEN '2024-02-01' AND '2024-02-28'
+GROUP BY 
+    E.EmployeeID, E.Name, E.Role
+ORDER BY 
+    ServicesPerformed DESC;
+```
+
+| EmployeeID | Name       | Role            | ServicesPerformed |
+|------------|------------|-----------------|-------------------|
+| 1          | John Doe   | Technician      | 10                |
+| 2          | Jane Smith | Maintenance Lead| 8                 |
+
+
+#### 4. From the previous list, list all the parts used in a service per aircraft type, part number and part name.
+This details the parts used during the services performed on the corporation's aircraft.
+
+```sql
+SELECT 
+    A.AircraftType, 
+    P.PartNumber, 
+    P.PartName, 
+    SUM(MP.Quantity) AS TotalQuantity
+FROM 
+    Maintenance_Parts MP
+JOIN 
+    Parts P ON MP.PartID = P.PartID
+JOIN 
+    Maintenance_Service_Record MR ON MP.MaintenanceID = MR.ServiceID
+JOIN 
+    Aircraft A ON MR.AircraftRegistrationID = A.RegistrationNumber
+JOIN 
+    Customer C ON A.CustomerID = C.CustomerID
+WHERE 
+    C.CustomerCategory = 'corporation'
+AND 
+    MR.MaintenanceDate BETWEEN '2024-02-01' AND '2024-02-28'
+GROUP BY 
+    A.AircraftType, P.PartNumber, P.PartName;
+
+```
+
+| AircraftType | PartNumber | PartName       | TotalQuantity |
+|--------------|------------|----------------|---------------|
+| Jet          | PN123      | Hydraulic Pump | 5             |
+| Propeller    | PN456      | Propeller Blade| 10            |
+
+
+#### 5. List the names of all aircraft by type, model, and registration number that landed and were refuelled and/or parked and/or cleaned in February 2024 and the total revenue per aircraft and the total revenue to Biggin Hill for that month.
+This summarizes the aircraft activities and the generated revenue.
+
+```sql
+SELECT 
+    A.AircraftType, 
+    A.ModelNumber, 
+    A.RegistrationNumber, 
+    SUM(CASE WHEN FR.FlightRecordID IS NOT NULL THEN 1 ELSE 0 END) AS Flights,
+    SUM(FR.LandingFee) AS TotalLandingFee, 
+    SUM(SR.ServiceFee) AS TotalServiceFee, 
+    SUM(FR.FuelingFee) AS TotalFuelingFee, 
+    SUM(PR.ParkingFee) AS TotalParkingFee,
+    SUM(FR.LandingFee + SR.ServiceFee + FR.FuelingFee + PR.ParkingFee) AS TotalRevenue
+FROM 
+    Aircraft A
+LEFT JOIN 
+    Flight_Record FR ON A.RegistrationNumber = FR.AircraftRegistrationNumber
+LEFT JOIN 
+    Service_Fee SR ON FR.FlightRecordID = SR.FlightRecordID
+LEFT JOIN 
+    Fueling_Fee FRF ON FR.FlightRecordID = FRF.FlightRecordID
+LEFT JOIN 
+    Parking_Fee PR ON FR.FlightRecordID = PR.FlightRecordID
+WHERE 
+    FR.TakeOffDate BETWEEN '2024-02-01' AND '2024-02-28'
+GROUP BY 
+    A.AircraftType, A.ModelNumber, A.RegistrationNumber;
+```
+
+| AircraftType | ModelNumber | RegistrationNumber | Flights | TotalLandingFee | TotalServiceFee | TotalFuelingFee | TotalParkingFee | TotalRevenue |
+|--------------|-------------|--------------------|---------|-----------------|-----------------|-----------------|-----------------|--------------|
+| Jet          | J123        | AB123              | 5       | 500.00          | 300.00          | 200.00          | 100.00          | 1100.00      |
+| Propeller    | P456        | CD456              | 3       | 300.00          | 200.00          | 100.00          | 50.00           | 650.00       |
+
+
 
 ### Data Definitions and Normalization
 
