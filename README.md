@@ -286,6 +286,8 @@ GROUP BY
 
 Path: [Data Definitions and Normalization](./Data_Definitions_and_Normalization.md)
 
+This document provides detailed data definitions for all entities and explains how the database design adheres to the principles of normalization.
+
 ## Conclusion
 
 This project aims to design and implement a comprehensive system for managing airport operations within Biggin Hill Airport. By following the structured approach of defining the schema, creating the database, and inserting mock data, the project demonstrates how to manage and analyze airport operations effectively. The SQL queries provide valuable insights and analytics for IT management, ensuring that all operations comply with the airport's policies and are efficiently managed.
